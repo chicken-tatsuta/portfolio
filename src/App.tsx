@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { About } from "@/components/About";
 import { Contact } from "@/components/Contact";
 import { HanabiCaseStudy } from "@/components/HanabiCaseStudy";
@@ -8,7 +9,24 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { Skills } from "@/components/Skills";
 import { hanabiCaseStudy, impactStats, otherProjects, skills } from "@/data/portfolio";
 
-export default function Home() {
+export default function App() {
+  useEffect(() => {
+    document.title = "龍田 幹 | ポートフォリオ";
+
+    const description =
+      "FRC Team 9494 Hanabiでの代表・チーム運営・資金調達・広報・アウトリーチ経験を中心にまとめた、龍田幹のポートフォリオサイトです。";
+
+    let meta = document.querySelector('meta[name="description"]');
+
+    if (!meta) {
+      meta = document.createElement("meta");
+      meta.setAttribute("name", "description");
+      document.head.appendChild(meta);
+    }
+
+    meta.setAttribute("content", description);
+  }, []);
+
   return (
     <main className="relative overflow-hidden">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[34rem] bg-[radial-gradient(circle_at_top,_rgba(185,28,28,0.12),_transparent_55%)]" />
